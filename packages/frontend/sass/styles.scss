@@ -1,0 +1,98 @@
+$primary-color: #0bd35c;
+$white: #fff;
+$light-grey: #bbb;
+$grey: #999;
+
+html body {
+  font-family: "Roboto", sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+
+  header {
+    .logo {
+      width: 100px;
+    }
+    .ant-menu-horizontal {
+      float: right;
+    }
+  }
+  .ant-layout-has-sider {
+    .organization-name {
+      font-size: 1.4em;
+      font-weight: bold;
+      width: 100%;
+      height: 4em;
+    }
+  }
+
+  .loading-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .my-organizations {
+    padding: 40px;
+
+    h1 {
+      text-align: center;
+    }
+
+    .ant-space-align-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .organization-card {
+      display: inline-block;
+    }
+
+    .organization-button {
+      text-align: center;
+      width: 200px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      transition-duration: 500ms;
+
+      background: transparent;
+      box-shadow: 2px 2px 10px transparent;
+
+      .circle-letter,
+      .anticon svg {
+        background: $primary-color;
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        text-align: center;
+        line-height: 100px;
+        font-size: 50px;
+        color: $white;
+        justify-content: center;
+        box-shadow: 2px 2px 2px $light-grey;
+        border: $white solid 4px;
+      }
+
+      .anticon svg {
+        background: $grey;
+      }
+
+      h5 {
+        text-align: center;
+        padding-top: 1em;
+      }
+
+      &:hover {
+        background: $white;
+        box-shadow: 2px 2px 10px $light-grey;
+      }
+    }
+  }
+}

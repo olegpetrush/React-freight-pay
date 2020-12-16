@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: freight_pay
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://nztstbprvyyqnh:59c019e771a30841a0cbced06fd06062dfb3900bc91ef945548a861ceee7f302@ec2-52-207-25-133.compute-1.amazonaws.com:5432/d14ug0pkv31mj4
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=true
+      - FOREST_AUTH_SECRET=a3128b15bd20818eacda7aeb8bf967d5cfd64734e2028252172b4cc0f42aa77170427b2a4a859fba82bcfaf20dcaf698
+      - FOREST_ENV_SECRET=0975b4d38eebaf5a84de755ff9a720833d7efa9e67ab0e29604e8668a3ed99bc
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app

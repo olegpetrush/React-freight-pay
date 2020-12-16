@@ -1,0 +1,50 @@
+{
+  "name": "fps-frontend",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "@apollo/client": "^3.2.2",
+    "@apollo/react-hooks": "4.0.0",
+    "@apollo/react-ssr": "4.0.0",
+    "@auth0/auth0-react": "^1.0.0",
+    "@auth0/nextjs-auth0": "^0.16.0",
+    "@stripe/react-stripe-js": "1.1.2",
+    "@stripe/stripe-js": "1.5.0",
+    "antd": "^4.6.4",
+    "apollo-boost": "0.4.9",
+    "axios": "^0.20.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "15.3.0",
+    "isomorphic-fetch": "2.2.1",
+    "js-cookie": "2.2.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.0",
+    "new-relic-agent-react": "^2.0.1",
+    "next": "9.5.2",
+    "next-apollo": "^5.0.0",
+    "node-fetch": "^2.6.1",
+    "react": "16.13.1",
+    "react-apollo-hooks": "^0.5.0",
+    "react-dom": "16.13.1",
+    "react-loading": "^2.0.3",
+    "react-no-ssr": "^1.1.0",
+    "reactstrap": "^8.5.1",
+    "sass": "^1.26.11",
+    "use-auth0-hooks": "^0.7.0",
+    "zxcvbn": "^4.4.2"
+  },
+  "scripts": {
+    "dev": "node --require 'dotenv/config' --require 'babel-register' --experimental-modules ./server.ts",
+    "build": "next build",
+    "start": "NODE_ENV=production node --require 'dotenv/config' --require 'babel-register' --experimental-modules ./server.ts",
+    "heroku-postbuild": "next build"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.162",
+    "@types/react": "^16.9.53",
+    "nodemon": "^2.0.5"
+  }
+}

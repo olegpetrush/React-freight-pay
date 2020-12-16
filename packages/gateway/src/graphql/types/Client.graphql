@@ -1,0 +1,49 @@
+type Client {
+  id: ID!
+  name: String
+  phone: String
+  email: String
+  createdAt: String
+  updatedAt: String
+  createdBy: User
+  organization: Organization
+  address: Address
+}
+
+type Clients {
+  data: [Client]
+  count: Int
+}
+
+input ClientInput {
+  organizationId: ID!
+  name: String
+  phone: String
+  email: String
+}
+
+input ClientWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input ClientWhereInput {
+  id: ID
+  organization: OrganizationWhereInput
+  take: Int
+  skip: Int
+}
+
+type Mutation {
+  createClient(data: ClientInput): Client
+  updateClient(where: ClientWhereUniqueInput, data: ClientWhereInput): Client
+}
+
+type Query {
+  clients(where: ClientWhereInput): Clients
+  client(where: ClientWhereUniqueInput): Client
+}
+
+type Subscription {
+  clientUpdated(where: ClientWhereInput): Client
+}

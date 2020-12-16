@@ -1,0 +1,46 @@
+type UserToOrganization {
+  id: ID!
+  role: String
+  createdAt: String
+  updatedAt: String
+  user: User
+  organization: Organization
+}
+
+type UserToOrganizations {
+  data: [UserToOrganization]
+  count: Int
+}
+
+input UserToOrganizationWhereUniqueInput {
+  id: ID
+  role: String
+}
+
+input UserToOrganizationWhereInput {
+  id: ID
+  user: UserWhereInput
+}
+
+type Mutation {
+  updateUserToOrganization(
+    where: UserToOrganizationWhereUniqueInput
+    data: UserToOrganizationWhereInput
+  ): UserToOrganization
+}
+
+type Query {
+  myUserToOrganizations(
+    where: UserToOrganizationWhereInput
+  ): UserToOrganizations
+  userToOrganizations(where: UserToOrganizationWhereInput): UserToOrganizations
+  userToOrganization(
+    where: UserToOrganizationWhereUniqueInput
+  ): UserToOrganization
+}
+
+type Subscription {
+  userToOrganizationUpdated(
+    where: UserToOrganizationWhereInput
+  ): UserToOrganization
+}

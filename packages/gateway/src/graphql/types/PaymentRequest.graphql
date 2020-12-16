@@ -1,0 +1,60 @@
+type PaymentRequest {
+  id: ID!
+  description: String
+  amount: Float
+  invoiceNumber: String
+  dueDate: String
+  createdAt: String
+  updatedAt: String
+  organization: Organization
+  createdBy: User
+  client: Client
+  contacts: [Contact]
+}
+
+type PaymentRequests {
+  data: [PaymentRequest]
+  count: Int
+}
+
+input PaymentRequestContactInput {
+  id: ID
+}
+
+input PaymentRequestInput {
+  description: String
+  amount: Float
+  invoiceNumber: String
+  dueDate: String
+  organizationId: String
+  clientId: String
+  contacts: [PaymentRequestContactInput]
+}
+
+input PaymentRequestWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input PaymentRequestWhereInput {
+  id: ID
+  name: String
+}
+
+type Mutation {
+  createPaymentRequest(data: PaymentRequestInput): PaymentRequest
+  updatePaymentRequest(
+    where: PaymentRequestWhereUniqueInput
+    data: PaymentRequestWhereInput
+  ): PaymentRequest
+}
+
+type Query {
+  myPaymentRequests(where: PaymentRequestWhereInput): PaymentRequests
+  paymentRequests(where: PaymentRequestWhereInput): PaymentRequests
+  paymentRequest(where: PaymentRequestWhereUniqueInput): PaymentRequest
+}
+
+type Subscription {
+  paymentRequestUpdated(where: PaymentRequestWhereInput): PaymentRequest
+}

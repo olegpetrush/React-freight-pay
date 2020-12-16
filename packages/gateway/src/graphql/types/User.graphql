@@ -1,0 +1,42 @@
+type User {
+  id: ID!
+  auth0UserId: String
+  email: String
+  emailVerified: Boolean
+  firstName: String
+  lastName: String
+  fullName: String
+  picture: String
+  createdAt: String
+  updatedAt: String
+  organizations: Organizations
+  userToOrganizations: [UserToOrganization]
+}
+
+type Users {
+  data: [User]
+  count: Int
+}
+
+input UserWhereUniqueInput {
+  id: ID
+}
+
+input UserWhereInput {
+  id: ID
+}
+
+type Mutation {
+  updateUser(where: UserWhereUniqueInput, data: UserWhereInput): User
+}
+
+type Query {
+  users(where: UserWhereInput): Users
+  user(where: UserWhereUniqueInput): User
+  profile: User
+  dwollaCustomerByUser(where: UserWhereUniqueInput): DwollaCustomer
+}
+
+type Subscription {
+  userUpdated(where: UserWhereInput): User
+}

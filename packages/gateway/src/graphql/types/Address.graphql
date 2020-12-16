@@ -1,0 +1,58 @@
+type Address {
+  id: ID!
+  name: String
+  address1: String
+  address2: String
+  address3: String
+  city: String
+  stateProvinceRegion: String
+  postalCode: String
+  country: String
+  createdAt: String
+  updatedAt: String
+  user: User
+  client: Client
+}
+
+type Addresses {
+  data: [Address]
+  count: Int
+}
+
+input AddressInput {
+  name: String
+  address1: String
+  address2: String
+  address3: String
+  city: String
+  stateProvinceRegion: String
+  postalCode: String
+  country: String
+}
+
+input AddressWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input AddressWhereInput {
+  id: ID
+  name: String
+}
+
+type Mutation {
+  updateAddress(
+    where: AddressWhereUniqueInput
+    data: AddressWhereInput
+  ): Address
+}
+
+type Query {
+  myAddresses(where: AddressWhereInput): Addresses
+  addresses(where: AddressWhereInput): Addresses
+  address(where: AddressWhereUniqueInput): Address
+}
+
+type Subscription {
+  addressUpdated(where: AddressWhereInput): Address
+}

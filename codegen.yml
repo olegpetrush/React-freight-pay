@@ -1,0 +1,18 @@
+overwrite: true
+schema: 'packages/gateway/src/graphql/*/*.graphql'
+generates:
+  packages/frontend/generated/graphql.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+  packages/frontend/generated/hooks.tsx:
+    plugins:
+      - typescript-react-apollo
+    config:
+      withHOC: false
+      withComponent: false
+      withHooks: true
+  packages/gateway/src/generated/graphql.tsx:
+    plugins:
+      - typescript
+      - typescript-resolvers

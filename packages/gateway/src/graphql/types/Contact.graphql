@@ -1,0 +1,41 @@
+type Contact {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  createdAt: String
+  updatedAt: String
+  address: Address
+}
+
+type Contacts {
+  data: [Contact]
+  count: Int
+}
+
+input ContactWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input ContactWhereInput {
+  id: ID
+  name: String
+}
+
+type Mutation {
+  updateContact(
+    where: ContactWhereUniqueInput
+    data: ContactWhereInput
+  ): Contact
+}
+
+type Query {
+  contacts(where: ContactWhereInput): Contacts
+  contact(where: ContactWhereUniqueInput): Contact
+}
+
+type Subscription {
+  contactUpdated(where: ContactWhereInput): Contact
+}

@@ -1,0 +1,54 @@
+type Organization {
+  id: ID!
+  name: String
+  alias: String
+  createdAt: String
+  updatedAt: String
+  userToOrganizations: [UserToOrganization]
+  members: UserToOrganizations
+  clients: [Client]
+  address: Address
+  controller: ControllerContact
+}
+
+type Organizations {
+  data: [Organization]
+  count: Int
+}
+
+input OrganizationInput {
+  name: String!
+  alias: String
+  address: AddressInput
+  controller: ControllerContactInput
+}
+
+input OrganizationWhereUniqueInput {
+  id: ID
+  name: String
+  alias: String
+}
+
+input OrganizationWhereInput {
+  id: ID
+  name: String
+  alias: String
+}
+
+type Mutation {
+  createOrganization(data: OrganizationInput): Organization
+  updateOrganization(
+    where: OrganizationWhereUniqueInput
+    data: OrganizationWhereInput
+  ): Organization
+}
+
+type Query {
+  myOrganizations(where: OrganizationWhereInput): Organizations
+  organizations(where: OrganizationWhereInput): Organizations
+  organization(where: OrganizationWhereUniqueInput): Organization
+}
+
+type Subscription {
+  organizationUpdated(where: OrganizationWhereInput): Organization
+}

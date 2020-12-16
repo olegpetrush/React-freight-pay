@@ -1,0 +1,10 @@
+type DwollaCustomer {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String
+  type: String
+  status: String
+  created: String
+  correlationId: String
+}

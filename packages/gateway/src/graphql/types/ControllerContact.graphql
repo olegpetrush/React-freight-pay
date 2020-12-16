@@ -1,0 +1,62 @@
+type ControllerContact {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  createdAt: String
+  updatedAt: String
+  address: Address
+  ssn: String
+  dateOfBirth: String
+  title: String
+  organization: Organization
+}
+
+type ControllerContacts {
+  data: [ControllerContact]
+  count: Int
+}
+
+input ControllerContactInput {
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  createdAt: String
+  updatedAt: String
+  ssn: String
+  dateOfBirth: String
+  title: String
+  organization: OrganizationWhereUniqueInput
+  address: AddressInput
+}
+
+input ControllerContactWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input ControllerContactWhereInput {
+  id: ID
+  name: String
+}
+
+type Mutation {
+  createControllerContact(data: ControllerContactInput): ControllerContact
+  updateControllerContact(
+    where: ControllerContactWhereUniqueInput
+    data: ControllerContactWhereInput
+  ): ControllerContact
+}
+
+type Query {
+  controllerContacts(where: ControllerContactWhereInput): ControllerContacts
+  controllerContact(where: ControllerContactWhereUniqueInput): ControllerContact
+}
+
+type Subscription {
+  controllerContactUpdated(
+    where: ControllerContactWhereInput
+  ): ControllerContact
+}

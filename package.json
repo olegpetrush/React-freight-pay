@@ -1,0 +1,59 @@
+{
+  "name": "fps-api",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0",
+  "description": "FPS Monorepo",
+  "scripts": {
+    "dev": "concurrently \"lerna run dev --stream\" \"yarn generate --watch\"",
+    "start": "./scripts/start.sh",
+    "build": "./scripts/build.sh",
+    "preinstallGateway": "cd packages/gateway && yarn",
+    "preinstallFrontend": "cd packages/frontend && yarn",
+    "preinstallAdmin": "cd packages/admin && yarn",
+    "preinstall": "./scripts/preinstall.sh",
+    "generate": "graphql-codegen",
+    "prestart": "yarn generate",
+    "kill-dev": "lerna run kill-dev",
+    "prettier-fix": "yarn prettier --write .",
+    "prettier-check": "yarn prettier --check ."
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.10",
+    "@graphql-codegen/typescript": "^1.17.10",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "^2.0.7",
+    "@graphql-codegen/typescript-resolvers": "^1.17.10",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "husky": ">=4",
+    "lerna": "^3.22.1",
+    "lint-staged": ">=10",
+    "nodemon": "^2.0.5",
+    "prettier": "2.1.2",
+    "react-apollo-hooks": "^0.5.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "graphql": "^15.3.0",
+    "newrelic": "^6.13.2"
+  },
+  "author": {
+    "name": "Brandon Brotsky"
+  },
+  "engines": {
+    "node": "12.0.0",
+    "npm": "6.14.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
